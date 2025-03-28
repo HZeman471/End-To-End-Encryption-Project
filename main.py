@@ -7,7 +7,6 @@ from cryptography.hazmat.backends import default_backend
 import tkinter as tk
 from tkinter import filedialog
 
-
 SERVICE_NAME = "EncryptionSoftware"
 USERNAME = "EnkripcijskiKljuc"
 
@@ -22,8 +21,8 @@ def get_or_create_key():
 
 def encrypt_file(file_path):
     key = get_or_create_key()
-    iv = os.urandom(16)
-    cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
+    InitilaisationVector = os.urandom(16)
+    cipher = Cipher(algorithms.AES(key), modes.CBC(InitilaisationVector), backend=default_backend())
     encryptor = cipher.encryptor()
     
     with open(file_path, "rb") as f:
@@ -34,7 +33,7 @@ def encrypt_file(file_path):
     encrypted_data = encryptor.update(padded_data) + encryptor.finalize()
     
     with open(file_path + ".enc", "wb") as f:
-        f.write(iv + encrypted_data)
+        f.write(InitilaisationVector + encrypted_data)
     
     print(f"File encrypted successfully: {file_path}.enc")
 
