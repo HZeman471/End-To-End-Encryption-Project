@@ -43,7 +43,7 @@ target_url = "https://locust-notable-terrier.ngrok-free.app/upload"
 def ConvertToRandomName(Filename: str):
     random_filename = secrets.token_hex(5)  # Generate cryptographically secure filename, create (random name, actual name) pairs for storage of actual names
     KeyNamePairs = open("Pairs.txt", 'a')
-    StringZaZapisatio = "(%s, %s)" % (random_filename, Filename)
+    StringZaZapisatio = "(%s, %s) \n" % (random_filename, Filename)
     KeyNamePairs.write(StringZaZapisatio)
     KeyNamePairs.close()
     return random_filename
@@ -52,11 +52,7 @@ root = tk.Tk()
 root.withdraw()
 
 file_path = filedialog.askopenfilename()
-
-# file_path = r"C:\Users\Hrvoje\OneDrive - Univerza v Mariboru\Namizje\Library of Congress\Moji prispevki\AES Enkripcija\UploadTest"
 target_file = GetEncryptedFilePath(file_path)
-
-# file_name = os.path.basename(target_file)
 file_name = ConvertToRandomName(os.path.basename(target_file))
 
 with open(target_file, "rb") as target_file_encrypted:
