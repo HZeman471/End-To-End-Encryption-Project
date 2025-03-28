@@ -7,6 +7,7 @@ from cryptography.hazmat.backends import default_backend
 import tkinter as tk
 from tkinter import filedialog
 import secrets
+
 SERVICE_NAME = "Encryptav0.1Service"
 USERNAME = "Encryptav0.1User"
 
@@ -35,10 +36,9 @@ def GetEncryptedFilePath(PotDoDatoteke):
     with open(PotDoDatoteke + ".enc", "wb") as f:
         f.write(iv + encrypted_data)
     
-    return PotDoDatoteke + ".enc"
+    return PotDoDatoteke
 
 target_url = "https://locust-notable-terrier.ngrok-free.app/upload"
-
 
 def ConvertToRandomName(Filename: str):
     random_filename = secrets.token_hex(5)  # Generate cryptographically secure filename, create (random name, actual name) pairs for storage of actual names
