@@ -33,7 +33,7 @@ def GetEncryptedFilePath(PotDoDatoteke):
     padded_data = padder.update(data) + padder.finalize()
     encrypted_data = encryptor.update(padded_data) + encryptor.finalize()
     
-    with open(PotDoDatoteke + ".enc", "wb") as f:
+    with open(PotDoDatoteke, "wb") as f:
         f.write(iv + encrypted_data)
     
     return PotDoDatoteke
