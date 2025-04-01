@@ -8,14 +8,14 @@ GlavniProzor = tkinter.Tk()
 GlavniProzor.state('zoomed')
 GlavniProzor.title("AES Enkripcija")
 
-DesniOkvir = Frame(GlavniProzor, bg='#170121', width=1600, height=1000) # TODO: express width as percentage of the screen width
+screen_width = GlavniProzor.winfo_screenwidth()
+screen_height = GlavniProzor.winfo_screenheight()
+
+DesniOkvir = Frame(GlavniProzor, bg='#170121', width=screen_width * 0.7, height=screen_height) # TODO: express width as percentage of the screen width
 DesniOkvir.pack(side=RIGHT)
 
-LeviOkvir = Frame(GlavniProzor, bg='#0c0354', width=320, height=1000) # TODO: express width as percentage of the screen width
+LeviOkvir = Frame(GlavniProzor, bg='#0c0354', width=screen_width * 0.3, height=screen_height) # TODO: express width as percentage of the screen width
 LeviOkvir.pack(side=LEFT)
-
-LabelTitleRIght = Label(DesniOkvir)
-LabelTitleRIght.pack()
 
 menubar = Menu(GlavniProzor)
 filemenu = Menu(menubar, tearoff=0)
