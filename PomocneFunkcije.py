@@ -4,7 +4,6 @@ import keyring
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.primitives import padding
 from cryptography.hazmat.backends import default_backend
-import tkinter as tk
 from tkinter import filedialog
 import secrets
 
@@ -48,21 +47,16 @@ def ConvertToRandomName(Filename: str):
     KeyNamePairs.close()
     return random_filename
 
-root = tk.Tk()
-root.withdraw()
-
-file_path = filedialog.askopenfilename()
-target_file = GetEncryptedFilePath(file_path)
-file_name = ConvertToRandomName(os.path.basename(target_file))
-
-with open(target_file, "rb") as target_file_encrypted:
-    files = {"file": (file_name, target_file_encrypted, "application/octet-stream")}
-    
-    # Send the request
-    response = requests.post(target_url, files=files)
-
-# check the result
-if response.ok:
-    print(response.text)
-else:
-    print("Something went wrong")
+# file_path = filedialog.askopenfilename()
+# target_file = GetEncryptedFilePath(file_path)
+# file_name = ConvertToRandomName(os.path.basename(target_file))
+#
+# with open(target_file, "rb") as target_file_encrypted:
+#     files = {"file": (file_name, target_file_encrypted, "application/octet-stream")}
+#
+#     response = requests.post(target_url, files=files)
+#
+# if response.ok:
+#     print(response.text)
+# else:
+#     print("Something went wrong")
