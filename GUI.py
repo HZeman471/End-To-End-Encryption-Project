@@ -34,6 +34,14 @@ GlavniProzor = tkinter.Tk()
 GlavniProzor.state('zoomed')
 GlavniProzor.title("AES Enkripcija")
 
+menubar = Menu(GlavniProzor)
+filemenu = Menu(menubar, tearoff=0)
+filemenu.add_command(label="Odpri shranilni direktorij", command=OpenStorage)
+filemenu.add_command(label="Dodaj novo datoteko", command=AddFile)
+filemenu.add_command(label="Exit", command=GlavniProzor.quit)
+menubar.add_cascade(label="File", menu=filemenu)
+GlavniProzor.config(menu=menubar)
+
 # Configure the layout
 GlavniProzor.grid_rowconfigure(0, weight=1)
 GlavniProzor.grid_columnconfigure(0, weight=1)  # Sidebar (left)
@@ -81,7 +89,8 @@ for i, name in enumerate(SeznamVrsticParov):
 		pady=10,
 		borderwidth=0,
 		activebackground='#092e69',
-		activeforeground='white'
+		activeforeground='white',
+		relief = SUNKEN
 	)
 	btn.grid(row=i, column=0, pady=10, padx=20, sticky="w")
 
