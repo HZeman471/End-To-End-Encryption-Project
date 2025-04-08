@@ -70,11 +70,11 @@ for name in sidebar_buttons:
 	btn.pack(fill=tkinter.X)
 
 # Main frame buttons (example)
-main_buttons = ["Encrypt", "Decrypt", "Browse"]
-for i, name in enumerate(main_buttons):
+SeznamVrsticParov = open("Pairs.txt").readlines()
+for i, name in enumerate(SeznamVrsticParov):
 	btn = tkinter.Button(
 		DesniOkvir,
-		text=name,
+		text=name.split(", ")[-1],
 		bg='#03132b',
 		fg='#ffffff',
 		padx=20,
