@@ -74,12 +74,14 @@ SeznamVrsticParov = open("Pairs.txt").readlines()
 for i, name in enumerate(SeznamVrsticParov):
 	btn = tkinter.Button(
 		DesniOkvir,
-		text=name.split(", ")[-1],
+		text=name.split(", ")[-1].replace(")", ""),
 		bg='#03132b',
 		fg='#ffffff',
 		padx=20,
 		pady=10,
 		borderwidth=0,
+		activebackground='#092e69',
+		activeforeground='white'
 	)
 	btn.grid(row=i, column=0, pady=10, padx=20, sticky="w")
 
