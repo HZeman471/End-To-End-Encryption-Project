@@ -42,7 +42,6 @@ filemenu.add_command(label="Exit", command=GlavniProzor.quit)
 menubar.add_cascade(label="File", menu=filemenu)
 GlavniProzor.config(menu=menubar)
 
-# Configure the layout
 GlavniProzor.grid_rowconfigure(0, weight=1)
 GlavniProzor.grid_columnconfigure(0, weight=1)  # Sidebar (left)
 GlavniProzor.grid_columnconfigure(1, weight=9)  # Main area (right)
@@ -50,19 +49,15 @@ GlavniProzor.grid_columnconfigure(1, weight=9)  # Main area (right)
 screen_width = GlavniProzor.winfo_screenwidth()
 screen_height = GlavniProzor.winfo_screenheight()
 
-# Sidebar frame (left)
 LeviOkvir = Frame(GlavniProzor, bg='#061938')
 LeviOkvir.grid(row=0, column=0, sticky="nsew")
 
-# Main content frame (right)
 DesniOkvir = Frame(GlavniProzor, bg='#03132b')
 DesniOkvir.grid(row=0, column=1, sticky="nsew")
 
-# Prevent resizing based on content
 LeviOkvir.pack_propagate(False)
 DesniOkvir.pack_propagate(False)
 
-# Sidebar buttons
 sidebar_buttons = ["Moje datoteke", "Nastavitve", "Račun"]
 for name in sidebar_buttons:
 	btn = tkinter.Button(
@@ -77,7 +72,6 @@ for name in sidebar_buttons:
 	)
 	btn.pack(fill=tkinter.X)
 
-# Main frame buttons (example)
 SeznamVrsticParov = open("Pairs.txt").readlines()
 for i, name in enumerate(SeznamVrsticParov):
 	btn = tkinter.Button(
@@ -85,13 +79,14 @@ for i, name in enumerate(SeznamVrsticParov):
 		text=name.split(", ")[-1].replace(")", ""),
 		bg='#03132b',
 		fg='#ffffff',
-		padx=20,
-		pady=10,
+		padx=5,
+		pady=5,
 		borderwidth=0,
 		activebackground='#092e69',
 		activeforeground='white',
-		relief = SUNKEN
+		relief = SUNKEN,
+		anchor=tkinter.CENTER
 	)
-	btn.grid(row=i, column=0, pady=10, padx=20, sticky="w")
+	btn.grid(row=i, column=0, pady=5, padx=5, sticky="w")
 
 GlavniProzor.mainloop()
