@@ -38,6 +38,16 @@ def GetEncryptedFilePath(PotDoDatoteke):
 
 target_url = "https://locust-notable-terrier.ngrok-free.app/upload"
 
+
+def RemoveFileFromSystem(FIlePath):
+	# find file alias
+    FileListLog = open("Pairs.txt").readlines()
+	for i in range(0, len(FileListLog)):
+		TrenutnaDatoteka = FileListLog[i].split(", ")[1]
+		if TrenutnaDatoteka == os.path.basename(FIlePath):
+			os.remove(FIlePath)
+		# TODO: Recreate the pairs file, because we can't delete only one row from the file.
+	
 def ConvertToRandomName(Filename: str):
 	random_filename = secrets.token_hex(5)  # Generate cryptographically secure filename, create (random name, actual name) pairs for storage of actual names
 	KeyNamePairs = open("Pairs.txt", 'a')
