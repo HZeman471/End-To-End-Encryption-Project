@@ -11,5 +11,7 @@ class File:
 		self.Direectory = -1
 		self.FileName = -1
 		self.Alias = -1
-		
-		
+	
+	def AssimilateFromPair(self, FileLine):
+		self.Alias, self.FileName = FileLine.split(", ")
+		self.Direectory = r"C:\Users\Hrvoje\OneDrive - Univerza v Mariboru\Namizje\Library of Congress\Moji prispevki\AES Enkripcija\uploads" # TODO: Good grief, someone fix this
